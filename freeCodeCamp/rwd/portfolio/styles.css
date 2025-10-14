@@ -1,0 +1,38 @@
+/* Reset：先把瀏覽器預設樣式清乾淨 */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* 主題變數：之後你換色、改圓角、改陰影都改這裡就好 */
+:root {
+    --bg: #0b0c10;
+    --bg-soft: #11131a;
+    --surface: #171923;
+    --text: #e6e6ea;
+    --muted: #a9adc1;
+    --brand: #7aa2ff;
+    --brand-2: #c6a0ff;
+    --accent: #8ef6d1;
+    --ring: rgba(122, 162, 255, 0.35);
+
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
