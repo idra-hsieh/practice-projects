@@ -1,4 +1,4 @@
-/* Reset：先把瀏覽器預設樣式清乾淨 */
+/* reset default settings */
 *,
 *::before,
 *::after {
@@ -21,7 +21,7 @@ a {
     text-decoration: none;
 }
 
-/* 主題變數：之後你換色、改圓角、改陰影都改這裡就好 */
+/* theme */
 :root {
     --bg: #0b0c10;
     --bg-soft: #11131a;
@@ -35,4 +35,109 @@ a {
 
     --radius: 16px;
     --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+}
+
+/* navbar */
+
+#navbar.nav {
+    position: fixed;
+    /* stays at top even when scrolling */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    /* make sure it stays on top of all other content */
+}
+
+#navbar.nav {
+    /* make it a little transparent to see through the content below */
+    background: rgba(11, 12, 16, 0.7);
+    /* frosted glass effect */
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* automatically adapt to different width */
+    padding: 14px clamp(16px, 4vw, 28px);
+}
+
+.logo {
+    font-weight: 800;
+    letter-spacing: .06em;
+    display: inline-grid;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    color: #0b0c10;
+}
+
+.nav-links {
+    display: flex;
+    gap: clamp(10px, 2vw, 20px);
+    align-items: center;
+}
+
+.nav-links a {
+    padding: 8px 12px;
+    border-radius: 10px;
+    color: var(--muted);
+    transition: color .2s ease, background .2s ease, outline-color .2s ease;
+    outline: 2px solid transparent;
+}
+
+.nav-links a:hover {
+    color: white;
+    background: rgba(122, 162, 255, .08);
+}
+
+#profile-link {
+    color: white;
+    border: 1px solid rgba(255, 255, 255, .12);
+}
+
+#profile-link:hover {
+    background: rgba(255, 255, 255, .06);
+}
+
+body {
+    padding-top: 68px;
+    color: var(--text);
+    background: var(--bg);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* accessibility focus for keyboard users */
+a:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+    border-radius: 10px;
+}
+
+/* mobile view adjustments */
+@media (max-width: 640px) {
+    .nav {
+        padding: 12px 14px;
+    }
+
+    body {
+        padding-top: 60px;
+    }
+
+    /* smaller gap for smaller nav */
+    .nav-links {
+        gap: 8px;
+    }
+
+    .nav-links a {
+        padding: 8px 10px;
+    }
 }

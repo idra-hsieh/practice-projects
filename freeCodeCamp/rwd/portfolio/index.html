@@ -12,7 +12,27 @@
     </head>
 
     <body>
-        
+        <!-- required: navbar always at the top -->
+        <header id="navbar" class="nav">
+            <a class="logo" href="#welcome-section" aria-label="Go to top">IH</a>
+            <nav class="nav-links" aria-label="Primary">
+                <!-- required: internal anchors linked to id (#) -->
+                <a href="#welcome-section">Welcome</a>
+                <a href="#projects">Projects</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+                <!-- required: external profile link -->
+                <a id="profile-link" href="https://github.com/idra-hsieh" target="_blank" rel="noopener">GitHub ↗</a>
+            </nav>
+        </header>
+
+        <main>
+            <section id="welcome-section" style="min-height: 100vh;"></section>
+            <section id="projects" style="min-height: 50vh;"></section>
+            <section id="about" style="min-height: 50vh;"></section>
+            <section id="contact" style="min-height: 50vh;"></section>
+        </main>
+
         <!-- freeCodeCamp test suite to run local tests-->
         <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
     </body>
