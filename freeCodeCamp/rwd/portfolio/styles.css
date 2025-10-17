@@ -206,3 +206,113 @@ a:focus-visible {
         transition: none;
     }
 }
+
+
+/* ---- LAYOUT HELPERS ---- */
+.container {
+    width: min(1100px, 92vw);
+    margin-inline: auto;
+}
+
+.section {
+    padding: 96px 0;
+}
+
+/* ---- PROJECTS ---- */
+.projects h2 {
+    font-size: clamp(24px, 4.2vw, 36px);
+    margin: 0 0 26px;
+}
+
+.projects .grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* card base */
+.card {
+    background: var(--surface);
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform .18s ease, border-color .18s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    border-color: var(--ring);
+}
+
+/* clickable card and fixed media height */
+.card-link {
+    display: grid;
+    grid-template-rows: 180px 1fr;
+    /* top: media; bottom: content */
+    height: 100%;
+}
+
+/* preview media: use gradient for now; can be replaced with <img> */
+.card-media {
+    background: linear-gradient(135deg, #1f2340, #2f3c68);
+}
+
+.media-2 {
+    background: linear-gradient(135deg, #2a3a29, #3f6b5c);
+}
+
+.media-3 {
+    background: linear-gradient(135deg, #402532, #6a3a58);
+}
+
+/* content layout */
+.card-body {
+    padding: 16px;
+    display: grid;
+    gap: 10px;
+}
+
+.card-body h3 {
+    margin: 0;
+    font-size: 1.05rem;
+}
+
+.card-body p {
+    margin: 0;
+    color: var(--muted);
+}
+
+/* 技術標籤 chip */
+.chip {
+    display: inline-block;
+    font-size: .75rem;
+    line-height: 1;
+    padding: 6px 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, .06);
+    border: 1px solid rgba(255, 255, 255, .10);
+    margin-right: 6px;
+    margin-top: 2px;
+}
+
+/* ---- MEDIA QUERIES（響應式欄數） ---- */
+@media (max-width: 900px) {
+    .projects .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card-link {
+        grid-template-rows: 160px 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .projects .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-link {
+        grid-template-rows: 140px 1fr;
+    }
+}
