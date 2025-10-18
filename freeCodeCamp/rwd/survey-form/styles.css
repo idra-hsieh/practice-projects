@@ -1,23 +1,29 @@
 :root {
     --bg: #f6f1e9;
-    --card: #ffffff; /* form card */
-    --ink: #1f1b16; /* primary text */
-    --muted: #6d6457; /* secondary text */
-    --border: #e6dccf; /* soft divider/border */
-    --input: #fbf8f3; /* input background */
-    --accent: #b07a3f; /* caramel accent */
+    --card: #ffffff;
+    /* form card */
+    --ink: #1f1b16;
+    /* primary text */
+    --muted: #6d6457;
+    /* secondary text */
+    --border: #e6dccf;
+    /* soft divider/border */
+    --input: #fbf8f3;
+    /* input background */
+    --accent: #b07a3f;
+    /* caramel accent */
     --accent-ink: #2b1d0f;
 
     --radius: 14px;
-    --shadow: 0 20px 40px rgba(28,21,14,08);
+    --shadow: 0 20px 40px rgba(28, 21, 14, 08);
 
     --space-1: .5rem;
-        --space-2: .75rem;
-        --space-3: 1rem;
-        --space-4: 1.25rem;
-        --space-5: 1.75rem;
-        --space-6: 2.25rem;
-    }
+    --space-2: .75rem;
+    --space-3: 1rem;
+    --space-4: 1.25rem;
+    --space-5: 1.75rem;
+    --space-6: 2.25rem;
+}
 
 *,
 *::before,
@@ -194,3 +200,22 @@ input[type="checkbox"] {
     }
 }
 
+
+.group {
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    padding: var(--space-3);
+}
+
+.group legend {
+    font-weight: 700;
+    margin-bottom: .35rem;
+}
+
+.choice {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    margin-right: 1rem;
+    margin-top: .35rem;
+}
