@@ -174,3 +174,22 @@ input[type="checkbox"] {
 #submit:active {
     transform: translateY(1px);
 }
+
+@media (min-width: 720px) {
+    #survey-form {
+        grid-template-columns: 1fr 1fr;
+        column-gap: var(--space-5);
+    }
+
+    /* Make the dropdown row look like the others by default; all fields span 1 col unless promoted */
+    /* Promote multi-line or “grouped” items to full width */
+    #dropdown-label,
+    #dropdown,
+    #radio-label,
+    #checkbox-label,
+    #textarea-label,
+    #textarea,
+    #submit {
+        grid-column: 1 / -1;
+    }
+}
