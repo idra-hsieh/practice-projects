@@ -73,7 +73,7 @@ img {
 
 /* Main card wrapper */
 #main {
-    width: min(960px, 100%);
+    width: min(960px, 92%);
     background: var(--card);
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -223,12 +223,12 @@ img {
    ========================================================= */
 @media (min-width: 720px) {
     #main {
-        padding: var(--space-8);
+        padding: var(--space-3);
         /* roomier on larger screens */
-        gap: var(--space-8);
+        gap: var(--space-3);
     }
 
     #img-div {
-        padding: var(--space-8);
+        padding: var(--space-3);
     }
 }
