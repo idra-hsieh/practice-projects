@@ -1,0 +1,1 @@
+console.log("Palindrome Checker ready");
