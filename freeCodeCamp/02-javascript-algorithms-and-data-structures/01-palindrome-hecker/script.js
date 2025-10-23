@@ -25,3 +25,7 @@ function handleCheck() {
 }
 
 checkBtn.addEventListener("click", handleCheck);
+
+inputEl.addEventListener("input", () => {
+    resultEl.textContent = "";
+})
