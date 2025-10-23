@@ -61,6 +61,10 @@ body {
     padding: min(8vh, 6rem) var(--space-4);
 }
 
+.center {
+    text-align: center;
+}
+
 img {
     max-width: 100%;
     display: block;
