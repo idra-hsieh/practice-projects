@@ -28,7 +28,7 @@
     --space-6: 2.25rem;
     --space-7: 3rem;
     --space-8: 3.25rem;
-    --space-9: 3.5rem;
+    --space-9: 5rem;
 }
 
 /* =========================================================
@@ -80,7 +80,7 @@ img {
     box-shadow: var(--shadow);
 
     /* Internal padding and vertical rhythm */
-    padding: var(--space-8);
+    padding: var(--space-9);
     display: grid;
     gap: var(--space-8);
 }
@@ -223,9 +223,9 @@ img {
    ========================================================= */
 @media (min-width: 720px) {
     #main {
-        padding: var(--space-3);
+        padding: var(--space-7);
         /* roomier on larger screens */
-        gap: var(--space-3);
+        gap: var(--space-5);
     }
 
     #img-div {
