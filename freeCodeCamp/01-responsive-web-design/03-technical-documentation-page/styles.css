@@ -1,0 +1,343 @@
+/* =========================================================
+   Theme tokens (kept from your form project)
+   ========================================================= */
+:root {
+    --bg: #f6f1e9;
+    --card: #ffffff;
+    /* surface/card */
+    --ink: #1f1b16;
+    /* primary text */
+    --muted: #6d6457;
+    /* secondary text */
+    --border: #e6dccf;
+    /* soft divider */
+    --input: #fbf8f3;
+    /* subtle surface */
+    --accent: #b07a3f;
+    /* caramel accent */
+    --accent-ink: #2b1d0f;
+
+    --radius: 14px;
+    --shadow: 0 20px 40px rgba(28, 21, 14, .08);
+
+    --space-1: .5rem;
+    --space-2: .75rem;
+    --space-3: 1rem;
+    --space-4: 1.25rem;
+    --space-5: 1.75rem;
+    --space-6: 2.25rem;
+    --space-7: 3rem;
+    --space-8: 3.25rem;
+    --space-9: 5rem;
+}
+
+/* =========================================================
+   Resets & base
+   ========================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: auto;
+    min-height: 100svh;
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial;
+    color: var(--ink);
+    background: radial-gradient(1200px 700px at 10% -10%, #f0e7db 0%, var(--bg) 45%, #efe6da 100%);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+
+    /* Switch to normal flow for the technical docs layout (was centered grid) */
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* Utility helpers kept from previous project */
+.center {
+    text-align: center;
+}
+
+.stack>*+* {
+    margin-top: var(--space-4);
+}
+
+/* =========================================================
+   Technical Docs Layout (meets FCC #21)
+   ========================================================= */
+
+/* Fixed left navbar */
+#navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    /* fill viewport height */
+    width: 280px;
+    padding: var(--space-5) var(--space-4);
+    overflow: auto;
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+/* Navbar title */
+#navbar>header {
+    margin: 0 0 var(--space-3);
+    font-weight: 700;
+    font-size: clamp(1.1rem, 1.6vw, 1.25rem);
+    color: var(--accent-ink);
+}
+
+/* Navbar links */
+#navbar .nav-link {
+    display: block;
+    margin: .35rem 0;
+    padding: .4rem .25rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+#navbar .nav-link:hover {
+    background: color-mix(in oklab, var(--input) 80%, #fff 20%);
+}
+
+#navbar .nav-link:focus-visible {
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+/* Main content to the right of the fixed navbar */
+#main-doc {
+    margin-left: 300px;
+    /* keep larger than navbar width */
+    padding: var(--space-7) var(--space-6);
+    width: min(960px, calc(100% - 300px));
+}
+
+/* Section card styling */
+.main-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: var(--space-6);
+}
+
+.main-section+.main-section {
+    margin-top: var(--space-7);
+}
+
+/* Section headers */
+.main-section>header {
+    margin: 0 0 var(--space-3);
+    font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+    letter-spacing: .2px;
+}
+
+/* Text rhythm */
+.main-section p {
+    margin: 0 0 var(--space-3);
+    color: var(--ink);
+}
+
+.main-section ul,
+.main-section ol {
+    margin: 0 0 var(--space-3);
+    padding-left: 1.25rem;
+}
+
+.main-section li+li {
+    margin-top: .35rem;
+}
+
+.main-section code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+/* Code blocks (pre > code) */
+pre {
+    margin: 0 0 var(--space-3);
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 2px);
+    overflow: auto;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5);
+}
+
+pre code {
+    display: block;
+    padding: var(--space-3);
+    font-size: .95rem;
+}
+
+/* =========================================================
+   Accessibility niceties
+   ========================================================= */
+:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 28%, transparent);
+    border-radius: 8px;
+}
+
+/* =========================================================
+   Responsive tweaks (meets FCC #22)
+   ========================================================= */
+@media (max-width: 900px) {
+
+    /* On small screens, stack navbar on top and remove fixed positioning */
+    #navbar {
+        position: static;
+        width: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        box-shadow: none;
+    }
+
+    #main-doc {
+        margin-left: 0;
+        width: 100%;
+        padding: var(--space-6) var(--space-4);
+    }
+}
+
+/* =========================================================
+   Legacy styles from tribute/form page (kept for brand consistency)
+   Not used by the tech docs page but safe to retain.
+   ========================================================= */
+
+#main {
+    width: min(960px, 92%);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: var(--space-9);
+    display: grid;
+    gap: var(--space-8);
+}
+
+#title {
+    margin: 0 0 .25rem;
+    font-size: clamp(1.9rem, 3.2vw, 2.5rem);
+    letter-spacing: .2px;
+}
+
+#description {
+    margin: 0;
+    color: var(--muted);
+    max-width: 60ch;
+    margin-inline: auto;
+}
+
+#img-div {
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 2px);
+    padding: var(--space-4);
+}
+
+#image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-inline: auto;
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(32, 24, 16, .06);
+}
+
+#img-caption {
+    color: var(--muted);
+    text-align: center;
+    margin-top: var(--space-2);
+    font-size: .95rem;
+}
+
+#tribute-info h2 {
+    margin: 0;
+    font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+}
+
+#tribute-info h3 {
+    margin: var(--space-3) 0 var(--space-2);
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+}
+
+#tribute-info p,
+#tribute-info li {
+    color: var(--ink);
+}
+
+#tribute-info ul {
+    margin: 0;
+    padding-left: 1.25rem;
+}
+
+#tribute-info li+li {
+    margin-top: .35rem;
+}
+
+#tribute-info .center {
+    margin-top: var(--space-6);
+}
+
+#tribute-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    text-decoration: none;
+    border: 1px solid color-mix(in oklab, var(--accent) 50%, var(--border));
+    background:
+        linear-gradient(180deg, color-mix(in oklab, var(--accent) 18%, white) 0%,
+            color-mix(in oklab, var(--accent) 8%, #fff0) 100%), var(--card);
+    color: var(--accent-ink);
+    font-weight: 700;
+    padding: .9rem 1.1rem;
+    border-radius: 999px;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(32, 24, 16, .08), inset 0 1px 0 rgba(255, 255, 255, .6);
+    transition: transform .06s ease, filter .15s ease, box-shadow .2s ease;
+    min-width: 13rem;
+}
+
+#tribute-link:hover {
+    filter: saturate(1.05) brightness(1.02);
+    box-shadow: 0 12px 26px rgba(32, 24, 16, .12), inset 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+#tribute-link:active {
+    transform: translateY(1px);
+}
+
+#tribute-link:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 4px color-mix(in oklab, var(--accent) 20%, transparent),
+        0 12px 26px rgba(32, 24, 16, .12),
+        inset 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+@media (min-width: 720px) {
+    #main {
+        padding: var(--space-7);
+        gap: var(--space-5);
+    }
+
+    #img-div {
+        padding: var(--space-3);
+    }
+}
