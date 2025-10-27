@@ -1,4 +1,39 @@
-/* reset default settings */
+/* ===============================
+   Theme tokens (from CSS-update)
+   =============================== */
+:root {
+    --bg: #f6f1e9;
+    --card: #ffffff;
+    /* surface/card */
+    --ink: #1f1b16;
+    /* primary text */
+    --muted: #6d6457;
+    /* secondary text */
+    --border: #e6dccf;
+    /* soft divider */
+    --input: #fbf8f3;
+    /* subtle surface */
+    --accent: #b07a3f;
+    /* caramel accent */
+    --accent-ink: #2b1d0f;
+
+    --radius: 16px;
+    --shadow: 0 10px 30px rgba(28, 21, 14, .08);
+
+    --space-1: .5rem;
+    --space-2: .75rem;
+    --space-3: 1rem;
+    --space-4: 1.25rem;
+    --space-5: 1.75rem;
+    --space-6: 2.25rem;
+    --space-7: 3rem;
+    --space-8: 3.25rem;
+    --space-9: 5rem;
+}
+
+/* ===============================
+   Reset & base
+   =============================== */
 *,
 *::before,
 *::after {
@@ -11,9 +46,14 @@ body {
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 img {
     max-width: 100%;
     display: block;
+    height: auto;
 }
 
 a {
@@ -21,47 +61,57 @@ a {
     text-decoration: none;
 }
 
-/* theme */
-:root {
-    --bg: #0b0c10;
-    --bg-soft: #11131a;
-    --surface: #171923;
-    --text: #e6e6ea;
-    --muted: #a9adc1;
-    --brand: #7aa2ff;
-    --brand-2: #c6a0ff;
-    --accent: #8ef6d1;
-    --ring: rgba(122, 162, 255, 0.35);
+body {
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial;
+    color: var(--ink);
+    background:
+        radial-gradient(1000px 600px at 80% -10%, #efe6da, transparent 60%),
+        radial-gradient(800px 500px at 20% 110%, #f3eadf, transparent 60%),
+        var(--bg);
+    line-height: 1.6;
 
-    --radius: 16px;
-    --shadow: 0 10px 30px rgba(0, 0, 0, .35);
+    /* offset for fixed nav */
+    padding-top: 68px;
 }
 
-/* navbar */
+/* Layout helpers */
+.container {
+    width: min(1100px, 92vw);
+    margin-inline: auto;
+}
 
+.section {
+    padding: 96px 0;
+}
+
+/* Accessible focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 28%, transparent);
+    border-radius: 10px;
+}
+
+/* ===============================
+   Navbar (fixed)
+   =============================== */
 #navbar.nav {
     position: fixed;
-    /* stays at top even when scrolling */
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
-    /* make sure it stays on top of all other content */
-}
-
-#navbar.nav {
-    /* make it a little transparent to see through the content below */
-    background: rgba(11, 12, 16, 0.7);
-    /* frosted glass effect */
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    background: color-mix(in oklab, var(--card) 80%, #fff 20%);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    box-shadow: var(--shadow);
 }
 
 .nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* automatically adapt to different width */
     padding: 14px clamp(16px, 4vw, 28px);
 }
 
@@ -73,9 +123,12 @@ a {
     width: 40px;
     height: 40px;
     border-radius: 999px;
-    /* make it circle */
-    background: linear-gradient(135deg, var(--brand), var(--brand-2));
-    color: #0b0c10;
+    background:
+        linear-gradient(135deg,
+            color-mix(in oklab, var(--accent) 30%, #fff),
+            color-mix(in oklab, var(--accent) 8%, #fff));
+    color: var(--accent-ink);
+    border: 1px solid color-mix(in oklab, var(--accent) 35%, var(--border));
 }
 
 .nav-links {
@@ -93,60 +146,31 @@ a {
 }
 
 .nav-links a:hover {
-    color: white;
-    background: rgba(122, 162, 255, .08);
+    color: var(--ink);
+    background: color-mix(in oklab, var(--input) 80%, #fff 20%);
 }
 
 #profile-link {
-    color: white;
-    border: 1px solid rgba(255, 255, 255, .12);
+    color: var(--accent-ink);
+    border: 1px solid color-mix(in oklab, var(--accent) 45%, var(--border));
+    background:
+        linear-gradient(180deg,
+            color-mix(in oklab, var(--accent) 15%, #fff) 0%,
+            color-mix(in oklab, var(--accent) 5%, #fff0) 100%),
+        var(--card);
+    box-shadow: 0 6px 18px rgba(32, 24, 16, .06), inset 0 1px 0 rgba(255, 255, 255, .65);
 }
 
 #profile-link:hover {
-    background: rgba(255, 255, 255, .06);
+    background: color-mix(in oklab, var(--input) 60%, #fff 40%);
 }
 
-body {
-    padding-top: 68px;
-    color: var(--text);
-    background: var(--bg);
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-/* accessibility focus for keyboard users */
-a:focus-visible {
-    outline: 2px solid var(--ring);
-    outline-offset: 2px;
-    border-radius: 10px;
-}
-
-/* mobile view adjustments */
-@media (max-width: 640px) {
-    .nav {
-        padding: 12px 14px;
-    }
-
-    body {
-        padding-top: 60px;
-    }
-
-    /* smaller gap for smaller nav */
-    .nav-links {
-        gap: 8px;
-    }
-
-    .nav-links a {
-        padding: 8px 10px;
-    }
-}
-
-/* hero/welcome */
+/* ===============================
+   Hero / Welcome
+   =============================== */
 #welcome-section.hero {
-    /* required: full viewport height */
     min-height: 100vh;
+    /* FCC: full viewport height */
     display: grid;
     place-items: center;
     position: relative;
@@ -156,11 +180,14 @@ a:focus-visible {
 .hero-inner {
     text-align: center;
     width: min(800px, 92vw);
-    padding: 32px;
+    padding: clamp(24px, 4vw, 32px);
     border-radius: var(--radius);
-    background: linear-gradient(180deg, rgba(23, 25, 35, .60), rgba(23, 25, 35, .30));
+    background:
+        linear-gradient(180deg,
+            color-mix(in oklab, var(--card) 70%, var(--input) 30%),
+            color-mix(in oklab, var(--card) 90%, #fff 10%));
     box-shadow: var(--shadow);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--border);
 }
 
 #hero-title {
@@ -177,18 +204,23 @@ a:focus-visible {
 
 .cta {
     display: inline-block;
-    font-weight: 600;
+    font-weight: 700;
     padding: 12px 16px;
     border-radius: 12px;
-    background: linear-gradient(135deg, var(--brand), var(--accent));
-    color: #0a0a0a;
-    box-shadow: 0 6px 20px rgba(122, 162, 255, .35);
+    border: 1px solid color-mix(in oklab, var(--accent) 45%, var(--border));
+    background:
+        linear-gradient(135deg,
+            color-mix(in oklab, var(--accent) 25%, #fff),
+            color-mix(in oklab, var(--accent) 8%, #fff));
+    color: var(--accent-ink);
+    box-shadow: 0 10px 20px rgba(32, 24, 16, .08), inset 0 1px 0 rgba(255, 255, 255, .6);
     transform: translateY(0);
-    transition: transform .15s ease;
+    transition: transform .15s ease, filter .15s ease, box-shadow .2s ease;
 }
 
 .cta:hover {
     transform: translateY(-1px);
+    filter: saturate(1.02);
 }
 
 .hero-bg {
@@ -196,77 +228,68 @@ a:focus-visible {
     inset: -60px -20px -20px -20px;
     z-index: -1;
     background:
-        radial-gradient(600px 300px at 70% 30%, rgba(142, 246, 209, .20), transparent 60%),
-        radial-gradient(700px 380px at 30% 80%, rgba(122, 162, 255, .20), transparent 65%);
+        radial-gradient(600px 300px at 70% 30%, color-mix(in oklab, var(--accent) 20%, transparent), transparent 60%),
+        radial-gradient(700px 380px at 30% 80%, color-mix(in oklab, var(--ink) 8%, transparent), transparent 65%);
     filter: blur(8px);
 }
 
-@media (prefers-reduced-motion: reduce) {
-    .cta {
-        transition: none;
-    }
-}
-
-
-/* ---- LAYOUT HELPERS ---- */
-.container {
-    width: min(1100px, 92vw);
-    margin-inline: auto;
-}
-
-.section {
-    padding: 96px 0;
-}
-
-/* ---- PROJECTS ---- */
-.projects h2 {
+/* ===============================
+   Headings (shared)
+   =============================== */
+.projects h2,
+.about h2,
+.contact h2 {
     font-size: clamp(24px, 4.2vw, 36px);
     margin: 0 0 26px;
 }
 
+/* ===============================
+   Projects grid & cards
+   =============================== */
 .projects .grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px;
 }
 
-/* card base */
 .card {
-    background: var(--surface);
-    border: 1px solid rgba(255, 255, 255, .08);
+    background: var(--card);
+    border: 1px solid var(--border);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
     overflow: hidden;
-    transition: transform .18s ease, border-color .18s ease;
+    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
 }
 
 .card:hover {
     transform: translateY(-3px);
-    border-color: var(--ring);
+    box-shadow: 0 16px 36px rgba(32, 24, 16, .12);
+    border-color: color-mix(in oklab, var(--accent) 35%, var(--border));
 }
 
-/* clickable card and fixed media height */
 .card-link {
     display: grid;
     grid-template-rows: 180px 1fr;
-    /* top: media; bottom: content */
     height: 100%;
 }
 
-/* preview media: use gradient for now; can be replaced with <img> */
 .card-media {
-    background: linear-gradient(135deg, #1f2340, #2f3c68);
+    background:
+        linear-gradient(135deg,
+            color-mix(in oklab, var(--accent) 6%, #f3eee6),
+            color-mix(in oklab, var(--ink) 3%, #efe8dc));
 }
 
 .media-2 {
-    background: linear-gradient(135deg, #2a3a29, #3f6b5c);
+    background:
+        linear-gradient(135deg, #e9efe8, #dfece6);
 }
 
 .media-3 {
-    background: linear-gradient(135deg, #402532, #6a3a58);
+    background:
+        linear-gradient(135deg, #f3e7ea, #eadde3);
 }
 
-/* content layout */
 .card-body {
     padding: 16px;
     display: grid;
@@ -283,20 +306,47 @@ a:focus-visible {
     color: var(--muted);
 }
 
-/* 技術標籤 chip */
 .chip {
     display: inline-block;
     font-size: .75rem;
     line-height: 1;
     padding: 6px 8px;
     border-radius: 999px;
-    background: rgba(255, 255, 255, .06);
-    border: 1px solid rgba(255, 255, 255, .10);
+    background: var(--input);
+    border: 1px solid var(--border);
+    color: var(--muted);
     margin-right: 6px;
     margin-top: 2px;
 }
 
-/* ---- MEDIA QUERIES（響應式欄數） ---- */
+/* ===============================
+   About / Contact copy
+   =============================== */
+.about p,
+.contact p {
+    color: var(--muted);
+    max-width: 70ch;
+}
+
+/* ===============================
+   Footer
+   =============================== */
+.footer {
+    border-top: 1px solid var(--border);
+    padding: 28px 0;
+    background: color-mix(in oklab, var(--card) 80%, #fff 20%);
+}
+
+.footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+}
+
+/* ===============================
+   Media queries
+   =============================== */
 @media (max-width: 900px) {
     .projects .grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -308,6 +358,22 @@ a:focus-visible {
 }
 
 @media (max-width: 640px) {
+    .nav {
+        padding: 12px 14px;
+    }
+
+    body {
+        padding-top: 60px;
+    }
+
+    .nav-links {
+        gap: 8px;
+    }
+
+    .nav-links a {
+        padding: 8px 10px;
+    }
+
     .projects .grid {
         grid-template-columns: 1fr;
     }
