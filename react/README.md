@@ -1,41 +1,16 @@
-# 25 React Projects
+# React + Vite
 
-A collection of 25 mini projects built with **React.js**, covering fundamentals, hooks, and component-based design.  
-Inspired by [freeCodeCamp.org’s “Build 25 React Projects” tutorial](https://www.youtube.com/watch?v=5ZdHfJVAY-s) by [Sangam Mukherjee](https://github.com/sangammukherjee).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
----
+Currently, two official plugins are available:
 
-## Purpose
-To gain hands-on experience with React by building real-world UI components, custom hooks, and small-scale applications — preparing for front-end developer interviews.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
----
+## React Compiler
 
-## Projects
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-| # | Project | Focus |
-|---|----------|--------|
-| 01 | Accordion | Conditional rendering |
-| 02 | Random Color Generator | useState, event handling |
-| 03 | Star Rating | Controlled components |
-| 04 | Image Slider | useEffect, intervals |
-| 05 | Load More Button | Pagination logic |
-| 06 | Tree View / Recursive Menu | Recursion, props |
-| 07 | QR Code Generator | Third-party libraries |
-| 08 | Theme Switch (Light/Dark) | Context, state management |
-| 09 | Scroll Indicator | Scroll event listener |
-| 10 | Tabs | Dynamic UI switching |
-| 11 | Modal Popup | Portals, conditional mount |
-| 12 | GitHub Profile Finder | Fetch API integration |
-| 13 | Search Autocomplete | Debounce, API fetch |
-| 14 | Tic Tac Toe | State logic, conditional rendering |
-| 15 | Feature Flag System | Configuration-based rendering |
-| 16 | Custom Hook: useFetch | Reusable data fetching |
-| 17 | Custom Hook: useOnclickOutside | Event listeners, cleanup |
-| 18 | Custom Hook: useWindowResize | Responsive behavior |
-| 19 | Scroll to Top/Bottom | useRef, DOM control |
-| 20 | Scroll to Section | Anchor and refs |
-| 21 | Weather App | API integration |
-| 22 | Food Recipe App | API data rendering |
-| 23 | Shopping Cart App | State management, reducer |
-| 24 | Expense Tracker | LocalStorage persistence |
-| 25 | MERN Stack Blog App | Full-stack CRUD |
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
