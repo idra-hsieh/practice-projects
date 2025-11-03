@@ -18,3 +18,33 @@ body {
     margin: 0;
     padding: 0;
 }
+
+p,
+h3 {
+    margin: 0;
+    padding: 0;
+}
+
+ul {
+    padding-left: 0;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+.card {
+    max-width: 300px;
+    background: var(--bg-card);
+    margin: auto;
+    padding: 1em;
+}
+
+.card-thumbnail img {
+    max-width: 100%;
+}
+
+.card-avatar img {
+    height: 50px;
+    width: 50px;
+}
