@@ -80,3 +80,9 @@ console.assert(convertToRoman(16) === 'XVI', '16 → XVI');
 console.assert(convertToRoman(649) === 'DCXLIX', '649 → DCXLIX');
 console.assert(convertToRoman(1023) === 'MXXIII', '1023 → MXXIII');
 console.assert(convertToRoman(3999) === 'MMMCMXCIX', '3999 → MMMCMXCIX');
+
+inputEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        btnEl.click();
+    }
+});
