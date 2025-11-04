@@ -73,3 +73,10 @@ function convertToRoman(n) {
     }
     return res;
 }
+
+// sanity chaecks
+console.assert(convertToRoman(9) === 'IX', '9 → IX');
+console.assert(convertToRoman(16) === 'XVI', '16 → XVI');
+console.assert(convertToRoman(649) === 'DCXLIX', '649 → DCXLIX');
+console.assert(convertToRoman(1023) === 'MXXIII', '1023 → MXXIII');
+console.assert(convertToRoman(3999) === 'MMMCMXCIX', '3999 → MMMCMXCIX');
