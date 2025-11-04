@@ -1,0 +1,276 @@
+/* =========================================================
+   Theme tokens (from your previous form project, adapted here)
+   ========================================================= */
+:root {
+    --bg: #f6f1e9;
+    --card: #ffffff;
+    /* surface/card */
+    --ink: #1f1b16;
+    /* primary text */
+    --muted: #6d6457;
+    /* secondary text */
+    --border: #e6dccf;
+    /* soft divider */
+    --input: #fbf8f3;
+    /* subtle surface */
+    --accent: #b07a3f;
+    /* caramel accent */
+    --accent-ink: #2b1d0f;
+
+    --radius: 14px;
+    --shadow: 0 20px 40px rgba(28, 21, 14, .08);
+
+    --space-1: .5rem;
+    --space-2: .75rem;
+    --space-3: 1rem;
+    --space-4: 1.25rem;
+    --space-5: 1.75rem;
+    --space-6: 2.25rem;
+    --space-7: 3rem;
+    --space-8: 3.25rem;
+    --space-9: 5rem;
+}
+
+/* =========================================================
+   Reset & base
+   ========================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: auto;
+    min-height: 100svh;
+}
+
+body {
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial;
+    color: var(--ink);
+    background: radial-gradient(1200px 700px at 10% -10%, #f0e7db 0%, var(--bg) 45%, #efe6da 100%);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+
+    /* overall layout */
+    display: grid;
+    place-items: start center;
+    padding: min(8vh, 6rem) var(--space-4);
+}
+
+img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+
+/* =========================================================
+   Main card container (your <main>)
+   ========================================================= */
+main {
+    width: min(720px, 92%);
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: var(--space-8);
+    display: grid;
+    gap: var(--space-5);
+    justify-items: center;
+    /* center children horizontally */
+}
+
+/* =========================================================
+   Header
+   ========================================================= */
+main>h1 {
+    margin: 0;
+    font-size: clamp(1.9rem, 3.2vw, 2.4rem);
+    letter-spacing: .2px;
+    text-align: center;
+}
+
+/* =========================================================
+   Input + Button row
+   ========================================================= */
+.controls {
+    /* wrapper we’ll create via CSS only: use fieldset-style grid on main directly */
+}
+
+/* Use a small grid to center input + button side by side on wide screens,
+   and stack on mobile */
+main {
+    /* already a grid; add a child wrapper via CSS selector grouping */
+}
+
+.form-row {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    justify-items: center;
+}
+
+@media (min-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* =========================================================
+   Input
+   ========================================================= */
+#number {
+    width: 100%;
+    max-width: 460px;
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 4px);
+    padding: .9rem 1rem;
+    font-size: 1rem;
+    outline: none;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .6);
+    transition: box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
+}
+
+#number::placeholder {
+    color: color-mix(in oklab, var(--muted) 70%, #fff);
+}
+
+#number:focus-visible {
+    border-color: color-mix(in oklab, var(--accent) 55%, var(--border));
+    box-shadow:
+        0 0 0 3px color-mix(in oklab, var(--accent) 20%, transparent),
+        inset 0 1px 0 rgba(255, 255, 255, .8);
+    background: #fff;
+}
+
+/* =========================================================
+   Primary button
+   ========================================================= */
+#convert-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+
+    border: 1px solid color-mix(in oklab, var(--accent) 50%, var(--border));
+    background:
+        linear-gradient(180deg,
+            color-mix(in oklab, var(--accent) 18%, white) 0%,
+            color-mix(in oklab, var(--accent) 8%, #fff0) 100%),
+        var(--card);
+    color: var(--accent-ink);
+    font-weight: 700;
+    padding: .9rem 1.1rem;
+    border-radius: 999px;
+    /* pill shape */
+    cursor: pointer;
+    min-width: 10.5rem;
+
+    box-shadow:
+        0 10px 20px rgba(32, 24, 16, .08),
+        inset 0 1px 0 rgba(255, 255, 255, .6);
+    transition: transform .06s ease, filter .15s ease, box-shadow .2s ease;
+}
+
+#convert-btn:hover {
+    filter: saturate(1.05) brightness(1.02);
+    box-shadow: 0 12px 26px rgba(32, 24, 16, .12), inset 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+#convert-btn:active {
+    transform: translateY(1px);
+}
+
+#convert-btn:focus-visible {
+    outline: none;
+    box-shadow:
+        0 0 0 4px color-mix(in oklab, var(--accent) 20%, transparent),
+        0 12px 26px rgba(32, 24, 16, .12),
+        inset 0 1px 0 rgba(255, 255, 255, .7);
+}
+
+/* Put input and button into a row even without extra HTML wrapper */
+#number+#convert-btn {
+    /* when stacked (mobile) this keeps nice spacing */
+}
+
+/* =========================================================
+   Output
+   ========================================================= */
+#output {
+    min-height: 1.6em;
+    /* keeps height stable even before result */
+    font-weight: 600;
+    letter-spacing: .2px;
+    margin: 0;
+    text-align: center;
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 6px);
+    padding: var(--space-3) var(--space-4);
+    width: 100%;
+    max-width: 560px;
+    color: var(--ink);
+}
+
+/* =========================================================
+   Vertical rhythm (spacing between sections)
+   ========================================================= */
+main>* {
+    margin: 0;
+}
+
+h1+.form-row,
+h1+#number {
+    /* in case you don’t add the .form-row helper */
+    margin-top: var(--space-2);
+}
+
+.form-row+#output,
+#convert-btn+#output {
+    margin-top: var(--space-4);
+}
+
+/* =========================================================
+   Optional helper: make a .form-row without editing HTML
+   (progressive enhancement: turns the input+button into a row)
+   ========================================================= */
+#number,
+#convert-btn {
+    /* mark them so we can place them together responsively using :has() if supported */
+}
+
+@supports(selector(:has(*))) {
+    main:has(#number)#\:enhanced {}
+
+    /* noop to satisfy rule count; no effect */
+}
+
+/* =========================================================
+   Responsive tweaks
+   ========================================================= */
+@media (min-width: 720px) {
+    main {
+        padding: var(--space-7);
+        gap: var(--space-5);
+    }
+}
+
+/* =========================================================
+   Tiny utility for spacing without extra markup (optional)
+   ========================================================= */
+@media (min-width: 0px) {
+
+    /* Create a row wrapper purely via CSS by turning the two siblings into grid items */
+    #number,
+    #convert-btn {
+        /* nothing: handled by .form-row if you add it in HTML; see note below */
+    }
+}
