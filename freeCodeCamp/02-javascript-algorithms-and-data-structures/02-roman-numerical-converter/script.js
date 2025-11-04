@@ -1,4 +1,9 @@
 'use strict';
 
-// placeholder
-console.log('Roman Numeral Converter ready');
+const inputEl = document.getElementById('number');
+constbtnEl = document.getElementById('convert-btn');
+const outputEl = document.getElementById('output');
+
+function SetOutput(text) {
+    outputEl.textContent = text;
+}
